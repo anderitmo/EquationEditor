@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EquationEditor - Editor de Equações LaTeX & Markdown</title>
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19L9 5L14 19"></path>
+                    <path d="M6 14H12"></path>
+                    <path d="M15 11H21"></path>
+                    <path d="M15 15H21"></path>
+                </svg>
+                <h1>EquationEditor</h1>
+                <span class="badge">v1.0</span>
+            </div>
+
+            <div class="header-actions">
+                <button id="btn-share" class="btn btn-secondary" title="Gerar link de compartilhamento">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    <span>Compartilhar</span>
+                </button>
+                <button id="theme-toggle" class="btn btn-icon" title="Alternar tema Claro/Escuro">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Left/Top: Editor Side -->
+            <section class="editor-section">
+                <!-- Toolbar for Symbol Quick Insertion -->
+                <div class="toolbar-container">
+                    <div class="toolbar-header">
+                        <span>Símbolos Rápidos</span>
+                        <select id="preset-select" class="preset-dropdown">
+                            <option value="">-- Fórmulas Prontas (Presets) --</option>
+                            <option value="quad">Fórmula de Bhaskara</option>
+                            <option value="euler">Identidade de Euler</option>
+                            <option value="gauss">Distribuição Normal (Gauss)</option>
+                            <option value="fourier">Transformada de Fourier</option>
+                            <option value="maxwell">Equação de Maxwell (Gauss)</option>
+                            <option value="limit">Limite Fundamental</option>
+                            <option value="matrix">Matriz 2x2</option>
+                            <option value="integral">Integral Definida</option>
+                        </select>
+                    </div>
+                    <div class="symbols-grid">
+                        <button class="symbol-btn" data-insert="\frac{a}{b}" title="Fração">\frac{a}{b}</button>
+                        <button class="symbol-btn" data-insert="\sqrt{x}" title="Raiz Quadrada">\sqrt{x}</button>
+                        <button class="symbol-btn" data-insert="\sqrt[n]{x}" title="Raiz Enésima">\sqrt[n]{x}</button>
+                        <button class="symbol-btn" data-insert="x^{n}" title="Potência">x^{n}</button>
+                        <button class="symbol-btn" data-insert="x_{n}" title="Subscrito">x_{n}</button>
+                        <button class="symbol-btn" data-insert="\sum_{i=1}^{n}" title="Somatório">\sum</button>
+                        <button class="symbol-btn" data-insert="\int_{a}^{b}" title="Integral">\int</button>
+                        <button class="symbol-btn" data-insert="\lim_{x \to \infty}" title="Limite">\lim</button>
+                        <button class="symbol-btn" data-insert="\alpha" title="Alpha">&alpha;</button>
+                        <button class="symbol-btn" data-insert="\beta" title="Beta">&beta;</button>
+                        <button class="symbol-btn" data-insert="\pi" title="Pi">&pi;</button>
+                        <button class="symbol-btn" data-insert="\infty" title="Infinito">&infin;</button>
+                        <button class="symbol-btn" data-insert="\pm" title="Mais ou menos">&plusmn;</button>
+                        <button class="symbol-btn" data-insert="\leq" title="Menor ou igual">&le;</button>
+                        <button class="symbol-btn" data-insert="\geq" title="Maior ou igual">&ge;</button>
+                        <button class="symbol-btn" data-insert="\neq" title="Diferente">&ne;</button>
+                        <button class="symbol-btn" data-insert="\approx" title="Aproximadamente">&approx;</button>
+                        <button class="symbol-btn" data-insert="\partial" title="Derivada parcial">&part;</button>
+                        <button class="symbol-btn" data-insert="\vec{v}" title="Vetor">\vec{v}</button>
+                        <button class="symbol-btn" data-insert="\begin{matrix} a & b \\ c & d \end{matrix}" title="Matriz 2x2">[M]</button>
+                    </div>
+                </div>
+
+                <!-- Input Textarea -->
+                <div class="editor-input-wrapper">
+                    <div class="editor-input-header">
+                        <label for="editor-textarea">Código (LaTeX / Markdown)</label>
+                        <span class="hint">Use <code>$$ ... $$</code> ou <code>$ ... $</code> para equações</span>
+                    </div>
+                    <textarea id="editor-textarea" spellcheck="false" placeholder="Digite seu texto em Markdown e expressões em LaTeX...&#10;&#10;Exemplo:&#10;A solução da equação de segundo grau $$ax^2 + bx + c = 0$$ é dada por:&#10;&#10;$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$"></textarea>
+                </div>
+
+                <!-- Editor Actions -->
+                <div class="editor-actions">
+                    <button id="btn-save-history" class="btn btn-primary" title="Salvar no Histórico (Ctrl+S)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Salvar</span>
+                    </button>
+                    <button id="btn-clear-editor" class="btn btn-ghost" title="Limpar Editor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        <span>Limpar</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Right/Bottom: Preview & Export Side -->
+            <section class="preview-section">
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h2>Visualização</h2>
+                        <div class="export-options">
+                            <label class="toggle-label" title="Fundo transparente ao exportar PNG">
+                                <input type="checkbox" id="png-transparent" checked>
+                                <span>PNG Transparente</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="preview-output" class="preview-body">
+                        <!-- Rendered output appears here -->
+                    </div>
+                </div>
+
+                <!-- Export Action Buttons -->
+                <div class="export-actions">
+                    <button id="btn-copy-markdown" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        <span>Copiar Markdown</span>
+                    </button>
+                    <button id="btn-copy-latex" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                        <span>Copiar LaTeX</span>
+                    </button>
+                    <button id="btn-copy-png" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>Copiar PNG</span>
+                    </button>
+                    <button id="btn-download-png" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Baixar PNG</span>
+                    </button>
+                </div>
+
+                <!-- History Sidebar / Section -->
+                <div class="history-card">
+                    <div class="history-header">
+                        <h3>Histórico do Navegador</h3>
+                        <button id="btn-clear-history" class="btn btn-ghost btn-sm" title="Limpar todo o histórico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                            <span>Limpar Tudo</span>
+                        </button>
+                    </div>
+                    <div id="history-list" class="history-list">
+                        <div class="empty-history">Nenhuma equação salva no histórico.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- External Libraries (KaTeX, Marked, html2canvas) -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
