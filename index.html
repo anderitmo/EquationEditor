@@ -64,25 +64,63 @@
                         </select>
                     </div>
                     <div class="symbols-grid">
-                        <button class="symbol-btn" data-insert="\frac{a}{b}" title="Fração">\frac{a}{b}</button>
-                        <button class="symbol-btn" data-insert="\sqrt{x}" title="Raiz Quadrada">\sqrt{x}</button>
-                        <button class="symbol-btn" data-insert="\sqrt[n]{x}" title="Raiz Enésima">\sqrt[n]{x}</button>
-                        <button class="symbol-btn" data-insert="x^{n}" title="Potência">x^{n}</button>
-                        <button class="symbol-btn" data-insert="x_{n}" title="Subscrito">x_{n}</button>
-                        <button class="symbol-btn" data-insert="\sum_{i=1}^{n}" title="Somatório">\sum</button>
-                        <button class="symbol-btn" data-insert="\int_{a}^{b}" title="Integral">\int</button>
-                        <button class="symbol-btn" data-insert="\lim_{x \to \infty}" title="Limite">\lim</button>
-                        <button class="symbol-btn" data-insert="\alpha" title="Alpha">&alpha;</button>
-                        <button class="symbol-btn" data-insert="\beta" title="Beta">&beta;</button>
-                        <button class="symbol-btn" data-insert="\pi" title="Pi">&pi;</button>
-                        <button class="symbol-btn" data-insert="\infty" title="Infinito">&infin;</button>
+                        <!-- Estruturas & Operações Principais -->
+                        <button class="symbol-btn" data-insert="\frac{a}{b}" title="Fração (a/b)"><sup>a</sup>/<sub>b</sub></button>
+                        <button class="symbol-btn" data-insert="\sqrt{x}" title="Raiz Quadrada">&radic;x</button>
+                        <button class="symbol-btn" data-insert="\sqrt[n]{x}" title="Raiz Enésima"><sup>n</sup>&radic;x</button>
+                        <button class="symbol-btn" data-insert="x^{n}" title="Potência (Exponente)">x<sup>n</sup></button>
+                        <button class="symbol-btn" data-insert="x_{n}" title="Subscrito">x<sub>n</sub></button>
+                        <button class="symbol-btn" data-insert="\sum_{i=1}^{n}" title="Somatório">&sum;</button>
+                        <button class="symbol-btn" data-insert="\prod_{i=1}^{n}" title="Produtório">&prod;</button>
+                        <button class="symbol-btn" data-insert="\int_{a}^{b}" title="Integral Definida">&int;</button>
+                        <button class="symbol-btn" data-insert="\iint" title="Integral Dupla">&#8748;</button>
+                        <button class="symbol-btn" data-insert="\lim_{x \to \infty}" title="Limite">lim</button>
+
+                        <!-- Símbolos e Relações -->
                         <button class="symbol-btn" data-insert="\pm" title="Mais ou menos">&plusmn;</button>
+                        <button class="symbol-btn" data-insert="\times" title="Multiplicação (&times;)">&times;</button>
+                        <button class="symbol-btn" data-insert="\div" title="Divisão (&div;)">&div;</button>
+                        <button class="symbol-btn" data-insert="\cdot" title="Ponto de multiplicação">&middot;</button>
                         <button class="symbol-btn" data-insert="\leq" title="Menor ou igual">&le;</button>
                         <button class="symbol-btn" data-insert="\geq" title="Maior ou igual">&ge;</button>
                         <button class="symbol-btn" data-insert="\neq" title="Diferente">&ne;</button>
                         <button class="symbol-btn" data-insert="\approx" title="Aproximadamente">&approx;</button>
+                        <button class="symbol-btn" data-insert="\equiv" title="Identicamente igual">&equiv;</button>
+                        <button class="symbol-btn" data-insert="\propto" title="Proporcional a">&prop;</button>
+                        <button class="symbol-btn" data-insert="\infty" title="Infinito">&infin;</button>
                         <button class="symbol-btn" data-insert="\partial" title="Derivada parcial">&part;</button>
-                        <button class="symbol-btn" data-insert="\vec{v}" title="Vetor">\vec{v}</button>
+                        <button class="symbol-btn" data-insert="\nabla" title="Nabla / Gradiente">&nabla;</button>
+                        <button class="symbol-btn" data-insert="\vec{v}" title="Vetor (v&#771;)">v&#770;</button>
+
+                        <!-- Conjuntos & Lógica -->
+                        <button class="symbol-btn" data-insert="\in" title="Pertence">&isin;</button>
+                        <button class="symbol-btn" data-insert="\notin" title="Não pertence">&notin;</button>
+                        <button class="symbol-btn" data-insert="\subset" title="Subconjunto (&sub;)">&sub;</button>
+                        <button class="symbol-btn" data-insert="\cup" title="União">&cup;</button>
+                        <button class="symbol-btn" data-insert="\cap" title="Interseção">&cap;</button>
+                        <button class="symbol-btn" data-insert="\forall" title="Para todo">&forall;</button>
+                        <button class="symbol-btn" data-insert="\exists" title="Existe">&exist;</button>
+                        <button class="symbol-btn" data-insert="\to" title="Seta para direita">&rarr;</button>
+                        <button class="symbol-btn" data-insert="\Rightarrow" title="Implica">&rArr;</button>
+
+                        <!-- Letras Gregas -->
+                        <button class="symbol-btn" data-insert="\alpha" title="Alpha">&alpha;</button>
+                        <button class="symbol-btn" data-insert="\beta" title="Beta">&beta;</button>
+                        <button class="symbol-btn" data-insert="\gamma" title="Gama">&gamma;</button>
+                        <button class="symbol-btn" data-insert="\delta" title="Delta (minúsculo)">&delta;</button>
+                        <button class="symbol-btn" data-insert="\Delta" title="Delta (maiúsculo)">&Delta;</button>
+                        <button class="symbol-btn" data-insert="\theta" title="Theta">&theta;</button>
+                        <button class="symbol-btn" data-insert="\lambda" title="Lambda">&lambda;</button>
+                        <button class="symbol-btn" data-insert="\pi" title="Pi">&pi;</button>
+                        <button class="symbol-btn" data-insert="\sigma" title="Sigma">&sigma;</button>
+                        <button class="symbol-btn" data-insert="\omega" title="Ômega">&omega;</button>
+
+                        <!-- Funções Trigonométricas & Matrizes -->
+                        <button class="symbol-btn" data-insert="\sin" title="Seno">sin</button>
+                        <button class="symbol-btn" data-insert="\cos" title="Cosseno">cos</button>
+                        <button class="symbol-btn" data-insert="\tan" title="Tangente">tan</button>
+                        <button class="symbol-btn" data-insert="\ln" title="Logaritmo Natural">ln</button>
+                        <button class="symbol-btn" data-insert="\log" title="Logaritmo">log</button>
                         <button class="symbol-btn" data-insert="\begin{matrix} a & b \\ c & d \end{matrix}" title="Matriz 2x2">[M]</button>
                     </div>
                 </div>
@@ -106,6 +144,68 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                         <span>Limpar</span>
                     </button>
+                </div>
+
+                <!-- Didactic Tutorial Section -->
+                <div class="tutorial-card">
+                    <div class="tutorial-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tutorial-icon">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <h3>Guia Rápido & Fórmulas Populares</h3>
+                    </div>
+
+                    <div class="tutorial-body">
+                        <!-- Sintaxe Básica -->
+                        <div class="tutorial-guide">
+                            <h4>Como formatar em LaTeX:</h4>
+                            <ul>
+                                <li><strong>Em linha (Inline):</strong> Use um cifrão <code>$ E = mc^2 $</code> para fórmulas no meio do texto.</li>
+                                <li><strong>Em bloco (Em destaque):</strong> Use cifrões duplos <code>$$ \dots $$</code> para centralizar equações.</li>
+                                <li><strong>Frações e Raízes:</strong> <code>\frac{numerador}{denominador}</code> e <code>\sqrt{x}</code></li>
+                                <li><strong>Expoentes e Índices:</strong> <code>x^{2}</code> para potência e <code>x_{i}</code> para subscrito.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Exemplos Populares -->
+                        <div class="tutorial-examples">
+                            <h4>Exemplos Populares (Clique para inserir):</h4>
+                            <div class="example-grid">
+                                <div class="example-item" data-code="$$a^2 + b^2 = c^2$$">
+                                    <span class="example-title">Teorema de Pitágoras</span>
+                                    <code class="example-code">a^2 + b^2 = c^2</code>
+                                    <button class="btn btn-secondary btn-sm btn-insert-example">Inserir</button>
+                                </div>
+                                <div class="example-item" data-code="$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$">
+                                    <span class="example-title">Fórmula de Bhaskara</span>
+                                    <code class="example-code">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</code>
+                                    <button class="btn btn-secondary btn-sm btn-insert-example">Inserir</button>
+                                </div>
+                                <div class="example-item" data-code="$$e^{i\pi} + 1 = 0$$">
+                                    <span class="example-title">Identidade de Euler</span>
+                                    <code class="example-code">e^{i\pi} + 1 = 0</code>
+                                    <button class="btn btn-secondary btn-sm btn-insert-example">Inserir</button>
+                                </div>
+                                <div class="example-item" data-code="$$F = G \frac{m_1 m_2}{r^2}$$">
+                                    <span class="example-title">Gravitação Universal</span>
+                                    <code class="example-code">F = G \frac{m_1 m_2}{r^2}</code>
+                                    <button class="btn btn-secondary btn-sm btn-insert-example">Inserir</button>
+                                </div>
+                                <div class="example-item" data-code="$$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$">
+                                    <span class="example-title">Definição de Derivada</span>
+                                    <code class="example-code">f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}</code>
+                                    <button class="btn btn-secondary btn-sm btn-insert-example">Inserir</button>
+                                </div>
+                                <div class="example-item" data-code="$$\int_{a}^{b} f(x) \, dx = F(b) - F(a)$$">
+                                    <span class="example-title">Integral Definida</span>
+                                    <code class="example-code">\int_{a}^{b} f(x) dx = F(b) - F(a)</code>
+                                    <button class="btn btn-secondary btn-sm btn-insert-example">Inserir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
