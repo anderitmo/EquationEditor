@@ -159,6 +159,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Tutorial Example Formula Handling
+    document.querySelectorAll('.example-item').forEach(item => {
+        const codeToInsert = item.getAttribute('data-code');
+        const insertBtn = item.querySelector('.btn-insert-example');
+
+        const handleInsertion = (e) => {
+            e.stopPropagation();
+            if (codeToInsert) {
+                if (editorTextarea.value.trim().length > 0) {
+                    insertAtCursor('\n\n' + codeToInsert);
+                } else {
+                    editorTextarea.value = codeToInsert;
+                    renderContent();
+                }
+                showToast('Exemplo inserido no editor!');
+            }
+        };
+
+        if (insertBtn) {
+            insertBtn.addEventListener('click', handleInsertion);
+        }
+        item.addEventListener('click', handleInsertion);
+    });
+
     // Presets Dropdown
     presetSelect.addEventListener('change', (e) => {
         const presetKey = e.target.value;
